@@ -1,0 +1,24 @@
+section{
+    min-height:100vh;
+}
+.hero{
+    background-image:url("../image/background-ganteng.png") ;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.about{
+    background-image:url("../image/background-ganteng.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+
+}
+    
+button[type="submit"]{
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-right: 40px;
+}
