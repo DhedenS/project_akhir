@@ -1,24 +1,432 @@
-section{
-    min-height:100vh;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-.hero{
-    background-image:url("../image/background-ganteng.png") ;
-    background-repeat:no-repeat;
-    background-size:cover;
+
+/* Animasi Slide Up */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari 30px di bawah */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Pindah ke posisi aslinya */
+    }
 }
-.about{
-    background-image:url("../image/background-ganteng.png");
-    background-repeat:no-repeat;
-    background-size:cover;
+
+/* Animasi Slide Right */
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px); /* Mulai dari 30px di kanan */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Pindah ke posisi aslinya */
+    }
+}
+
+/* Animasi Slide Left */
+@keyframes slideLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px); /* Mulai dari 30px di kiri */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Pindah ke posisi aslinya */
+    }
+}
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section {
+    position: relative;
+    min-height: 100vh;
+    margin-bottom: 100px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Bagian Beranda */
+.hero {
+    background-image: url("../image/atas.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    z-index: -1;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+}
 
 
+
+
+/* Body */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #fefefe;
+    color: #333;
 }
+
+/* Section Features */
+.features {
+    background-image: url("../image/tengah.png"); /* Warna latar belakang */
+    padding: 50px 0;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.features h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 140px;
+}
+
+.features .highlight {
+    color: #3d56f0; /* Warna biru pada kata 'Atlantic Pedia' */
+}
+
+/* Container untuk item */
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styling untuk setiap item feature */
+.feature-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 250px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0; /* Awalnya tidak terlihat */
+    animation: fadeInUp 1s ease forwards; /* Efek animasi untuk muncul */
+}
+
+/* Tambahkan animasi ke item features */
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 50px;
+    color: #4995f3; /* Warna icon */
+    margin-bottom: 20px;
+}
+
+.feature-item h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Media Query untuk Responsiveness */
+@media screen and (max-width: 768px) {
+    .features-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-item {
+        width: 90%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Animasi untuk section features */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari posisi 30px di bawah */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Pindah ke posisi aslinya */
+    }
+}
+
+/* Tambahkan delay untuk animasi agar muncul satu per satu */
+.features-container .feature-item:nth-child(1) {
+    animation-delay: 0.2s; /* Item pertama muncul setelah 0.2 detik */
+}
+
+.features-container .feature-item:nth-child(2) {
+    animation-delay: 0.4s; /* Item kedua muncul setelah 0.4 detik */
+}
+
+.features-container .feature-item:nth-child(3) {
+    animation-delay: 0.6s; /* Item ketiga muncul setelah 0.6 detik */
+}
+
+.features-container .feature-item:nth-child(4) {
+    animation-delay: 0.8s; /* Item keempat muncul setelah 0.8 detik */
+}
+
+/* Bagian Produk */
+.tengah {
+    background-image: url("../image/produk.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+section.tengah .card {
+    position: absolute;
+    margin-left: 1350px;
+    margin-top: 150px;
+    opacity: 0; /* Card tidak terlihat saat halaman dimuat */
+    transform: translateY(-100px); /* Card dimulai dari 100px di atas */
+    animation: fadeInAndSlide 2.5s ease-in-out forwards; /* Efek animasi selama 1.5 detik */
+}
+
+/* Animasi untuk transition */
+@keyframes fadeInAndSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px); /* Posisi awal card di atas layar */
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-50px); /* Posisi card setengah jalan */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Posisi akhir card di tempat aslinya */
+    }
+}
+
+/* Tambahkan animasi delay pada card berikutnya */
+section.tengah .card:nth-child(2) {
+    animation-delay: 0.5s; /* Card kedua muncul 0.5 detik setelah card pertama */
+}
+
+section.tengah .card:nth-child(3) {
+    animation-delay: 1s; /* Card ketiga muncul 1 detik setelah card pertama */
+}
+
+section.tengah h5 {
+    font-size: 40px;
+    margin-top: 95px;
+    font-family: 'Times New Roman';
+}
+
+section.tengah h6 {
+    font-size: 40px;
+    font-family: 'Gill Sans';
+}
+
+section.tengah .button {
+    margin-left: 200px;
+    margin-top: 45px;
+}
+
+/* Bagian  Help Center*/
+section.help-center{
+    background-image: url("../image/helpC.png");
+    background-position: left;
+    background-size: 1500px;
+    background-repeat: no-repeat   ;
+    min-width: 100px;
     
-button[type="submit"]{
+}
+
+
+
+section.help-center .container {
+    position: absolute;
+    margin-top: 100px;
+    right: 50px; /* Posisi container di sisi kanan */
+    top: 50px; /* Jarak dari atas */
+    width: 500px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    padding-bottom: 100px;
+ 
+    text-align: center;
+}
+
+section.help-center h1 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+    text-align: center; /* Tengah di container */
+}
+
+section.help-center p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+    text-align: center; /* Tengah di container */
+}
+
+section.help-center .contact-list {
+    display: flex;
+    flex-direction: column; /* Atur ikon berjejer ke bawah */
+}
+
+section.help-center .contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s ease-in-out;
+}
+
+section.help-center .contact-item i {
+    font-size: 24px;
+    margin-right: 15px; /* Jarak antara ikon dan teks */
+}
+
+section.help-center .contact-item span {
+    font-size: 16px;
+}
+
+section.help-center .contact-item:hover {
+    background: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific styles for each contact item */
+.instagram { color: #E1306C; }
+.whatsapp { color: #25D366; }
+.email { color: #D44638; }
+.telegram { color: #0088cc; }
+.facebook { color: #3b5998; }
+
+.instagram:hover { background: #fdf1f7; }
+.whatsapp:hover { background: #e9f8ec; }
+.email:hover { background: #f9ecec; }
+.telegram:hover { background: #eaf5fb; }
+.facebook:hover { background: #e9edf5; }
+
+
+/* Bagian bawah */
+.about {
+    display: flex;
+    flex-direction: row; /* Susun elemen secara horizontal */
+    justify-content: space-around; /* Jarak antar kolom */
+    align-items: flex-start; /* Ratakan elemen di bagian atas */
+    background-image: url("../image/bawah.png"); /* Tambahkan background seperti di gambar */
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-size: cover;
+    margin-top: -50vh; /* Tinggi section agar sesuai layar */
+    padding: 50px 0; /* Padding atas dan bawah */
+    position: relative; /* Agar elemen lain bisa diatur posisinya */
+    margin-bottom: -100px;
+}
+
+.about .container {
+    display: flex;
+    flex-direction: row; /* Susun konten di dalam container secara horizontal */
+    gap: 100px; /* Beri jarak antar elemen */
+    align-items: flex-start; /* Pastikan elemen rata di bagian atas */
+    margin-top: 800px;
+}
+
+.about .container > div {
+    flex: 1; /* Biarkan setiap kolom mengambil ruang yang sama */
+}
+
+.about .newsletter {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column; /* Susun elemen form secara vertikal */
+    align-items: flex-start; /* Mulai dari kiri */
+    font-size: 50px;
+}
+
+.about h4, .about ul, .about p, .about form {
+    margin-bottom: 20px; /* Beri jarak antar elemen */
+}
+
+.about ul {
+    list-style: none; /* Hilangkan bullet point */
+    padding: 0;
+}
+
+.about ul li {
+    margin: 10px; /* Jarak antar item list */
+}
+
+.about ul li a {
+    text-decoration: none; /* Hilangkan underline pada link */
+    color: white; /* Sesuaikan warna teks */
+}
+
+.about form input[type="email"] {
+    padding: 10px; /* Padding pada input */
+    border: none; /* Hilangkan border */
+    margin-bottom: 10px; /* Jarak antar elemen form */
+}
+
+.about form button {
+    padding: 10px 20px; /* Padding pada tombol */
+    border: none; /* Hilangkan border */
+    background-color: #4a4a4a; /* Warna tombol */
+    color: white; /* Warna teks tombol */
+    cursor: pointer; /* Ubah kursor saat hover */
+}
+
+button[type="submit"] {
     padding-right: 35px;
     padding-left: 35px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
     margin-right: 40px;
+}
+
+/* Bagian Footer */
+.footer {
+    background-color: #333; /* Latar belakang footer */
+    color: #fff; /* Warna teks */
+    padding: 20px 0; /* Padding atas dan bawah */
+    text-align: center; /* Teks rata tengah */
+    position: relative; /* Memastikan footer berada di bagian bawah */
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px; /* Lebar maksimum konten footer */
+    margin: 0 auto; /* Rata tengah konten */
+}
+
+.footer-content {
+    margin: 10px 0; /* Jarak vertikal konten footer */
 }
